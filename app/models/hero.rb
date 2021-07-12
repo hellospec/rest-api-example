@@ -8,5 +8,6 @@ class Hero < ApplicationRecord
   def initialize_profile
     self.level = 1
     self.hp = 50
+    self.mp = 0
   end
 end

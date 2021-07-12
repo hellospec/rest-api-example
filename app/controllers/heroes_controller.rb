@@ -5,7 +5,7 @@ class HeroesController < ApplicationController
   end
 
   def create
-    hero = Hero.new(hero_params)
+    hero = Hero.new(hero_create__params)
 
     if hero.save
       render json: hero
@@ -24,7 +24,7 @@ class HeroesController < ApplicationController
 
   def edit
     if hero = find_hero
-      if hero.update(hero_params)
+      if hero.update(hero_update_params)
         render json: hero
       else
         render_error("cannot update hero")
@@ -36,9 +36,14 @@ class HeroesController < ApplicationController
 
   private
 
-  def hero_params
-    params.require('hero').permit(:name, :occupation, :gender, :level, :hp, :mp)
+  def hero_update_params
+    hero_create_params
   end
+
+  def hero_create_params
+    params.require('hero').permit(:name, :job, :gender)
+  end
+
 
   def render_error(msg)
     render json: { error: msg }, status: 500
