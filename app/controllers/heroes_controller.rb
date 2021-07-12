@@ -5,7 +5,7 @@ class HeroesController < ApplicationController
   end
 
   def create
-    hero = Hero.new(hero_create__params)
+    hero = Hero.new(hero_create_params)
 
     if hero.save
       render json: hero

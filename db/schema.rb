@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_015014) do
+ActiveRecord::Schema.define(version: 2021_07_12_091421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_015014) do
     t.integer "level", default: 1
     t.integer "hp", default: 0
     t.integer "mp", default: 0
+    t.string "job"
   end
 
 end
