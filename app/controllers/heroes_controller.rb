@@ -5,8 +5,12 @@ class HeroesController < ApplicationController
   end
 
   def create
-    hero = Hero.new(hero_create_params)
+    if hero_name_missing? || find_duplicated_hero?
+      render_error("cannot create hero. the hero name may be missing or duplicated")
+      return
+    end
 
+    hero = Hero.new(hero_create_params)
     if hero.save
       render json: hero
     else
@@ -51,5 +55,15 @@ class HeroesController < ApplicationController
 
   def find_hero
     Hero.find_by_id params[:id]
+  end
+
+  def hero_name_missing?
+    return true if params[:hero].present?
+    return true if params[:hero][:name].present?
+  end
+
+  def find_duplicated_hero?
+    ipnut_name = params[:hero][:name]
+    input_name.downcase == Hero.where(name: params[:heroa][:name]).last.name.downcase
   end
 end
