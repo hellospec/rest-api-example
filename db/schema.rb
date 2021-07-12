@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_091421) do
+ActiveRecord::Schema.define(version: 2021_07_05_015014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "heros", force: :cascade do |t|
     t.string "name"
+    t.string "job", default: "squire"
     t.string "gender", default: "male"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level", default: 1
     t.integer "hp", default: 0
     t.integer "mp", default: 0
-    t.string "job"
   end
 
 end

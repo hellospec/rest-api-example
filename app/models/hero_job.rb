@@ -3,7 +3,7 @@ class HeroJob
   BASE_MP = 70
 
   def self.available_jobs
-    %w(squire knight white_mage black_mage monk)
+    %w(squire knight white_mage black_mage monk holy_knight thief)
   end
 
   def self.default
