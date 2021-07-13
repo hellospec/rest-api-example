@@ -64,6 +64,9 @@ class HeroesController < ApplicationController
 
   def find_duplicated_hero?
     ipnut_name = params[:hero][:name]
-    input_name.downcase == Hero.where(name: params[:heroa][:name]).last.name.downcase
+    hero = Hero.where(name: input_name).last
+
+    return false if hero.blank?
+    input_name.downcase == hero.name.downcase
   end
 end
