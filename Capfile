@@ -18,7 +18,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require "capistrano/bundler"
 require "capistrano/rvm"
-require 'capistrano/puma'my_app_name
+require 'capistrano/puma'
 install_plugin Capistrano::Puma, load_hooks: false
 install_plugin Capistrano::Puma::Nginx
 install_plugin Capistrano::Puma::Systemd
