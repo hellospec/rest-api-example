@@ -49,7 +49,7 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server "139.177.188.152",
+server "linode",
   user: "deploy",
   roles: %w{web app},
   ssh_options: {
