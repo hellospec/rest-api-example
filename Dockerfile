@@ -14,7 +14,6 @@ COPY Gemfile* ./
 RUN gem install bundler && bundle install
 
 COPY . ./
-RUN bundle exec rails assets:precompile
 
 EXPOSE 3001
 
