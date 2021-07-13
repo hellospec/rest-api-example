@@ -90,6 +90,10 @@ GEM
       puma (>= 4.0, < 6.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     ed25519 (1.2.4)
     erubi (1.10.0)
     ffi (1.15.3)
@@ -177,8 +181,6 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.1)
-      tzinfo (>= 1.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -199,6 +201,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
+  dotenv-rails
   ed25519 (>= 1.2, < 2.0)
   listen (~> 3.3)
   pg (~> 1.1)
