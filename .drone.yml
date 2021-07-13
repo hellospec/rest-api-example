@@ -16,7 +16,7 @@ steps:
     environment:
       RAILS_ENV: production
     commands:
-      - docker-compose -f docker-compose.yml up --build 
+      - docker-compose -f docker-compose.yml up -d
 
 volumes:
   - name: docker_socket
