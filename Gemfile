@@ -15,6 +15,9 @@ gem 'puma', '~> 5.0'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'ed25519', '>= 1.2', '< 2.0'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -33,11 +36,12 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-asdf'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano3-puma', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
