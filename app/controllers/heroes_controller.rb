@@ -58,12 +58,12 @@ class HeroesController < ApplicationController
   end
 
   def hero_name_missing?
-    return true if params[:hero].present?
-    return true if params[:hero][:name].present?
+    return true if params[:hero].blank?
+    return true if params[:hero][:name].blank?
   end
 
   def find_duplicated_hero?
-    ipnut_name = params[:hero][:name]
+    input_name = params[:hero][:name]
     hero = Hero.where(name: input_name).last
 
     return false if hero.blank?
