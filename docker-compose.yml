@@ -11,11 +11,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: rest-api-example
+    container_name: rest_api_example
     volumes:
-      - .:/app/rest-api-example
+      - .:/app/rest_api_example
     ports:
-      - "3001:3001"
+      - "3002:3002"
     environment:
       DB_HOST: db
       DB_PORT: 5432
@@ -29,7 +29,7 @@ services:
       /bin/sh -c "set -e
                   bundle exec rails db:setup
                   bundle exec rails db:migrate
-                  bundle exec rails s -b 0.0.0.0 -p 3001"
+                  bundle exec rails s -b 0.0.0.0 -p 3002"
 
 
 volumes:
