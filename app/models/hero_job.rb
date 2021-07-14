@@ -1,7 +1,4 @@
 class HeroJob
-  BASE_HP = 100
-  BASE_MP = 70
-
   def self.available_jobs
     %w(squire knight white_mage black_mage monk holy_knight thief)
   end
@@ -14,23 +11,30 @@ class HeroJob
     @title = title
   end
 
-  def init_hp
-    case @title
-    when 'squire'     then BASE_HP * 1.0 
-    when 'knight'     then BASE_HP * 1.25
-    when 'white_mage' then BASE_HP * 0.85
-    when 'black_mage' then BASE_HP * 0.9
-    when 'monk'       then BASE_HP * 1.33
-    end
+  def calculate_power(hero)
+    new_hp = hero.hp * power_factor.fetch(:hp)
+    new_mp = hero.mp * power_factor.fetch(:mp) 
+    [new_hp, new_mp]
   end
 
-  def init_mp
+  private
+
+  def power_factor
     case @title
-    when 'squire'     then BASE_MP * 0
-    when 'knight'     then BASE_MP * 0
-    when 'white_mage' then BASE_MP * 1.35
-    when 'black_mage' then BASE_MP * 1.25
-    when 'monk'       then BASE_MP * 0
+    when 'knight'
+      { hp: 1.25, mp: 1.0 }
+
+    when 'white_mage'
+      { hp: 0.75, mp: 1.35 }
+
+    when 'black_mage' 
+      { hp: 0.8, mp: 1.25 }
+
+    when 'monk'       
+      { hp: 1.35, mp: 0 }
+
+    else
+      { hp: 1.0, mp: 1.0 }
     end
   end
 end

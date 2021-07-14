@@ -1,28 +1,33 @@
 class Hero < ApplicationRecord
   before_create :initialize_profile
+  before_update :update_power_by_job
 
   enum gender: { male: "m", female: "f" }
 
+  BASE_HP = 100
+  BASE_MP = 70
+
   validates :name, presence: true
-  validates :name, uniqueness: true, on: :create
-  validate :with_existing_job, on: :create
+  validates :name, uniqueness: true
+  validate :with_existing_job
 
   private
 
   def initialize_profile
     self.level = 1
+    self.hp = BASE_HP
+    self.mp = BASE_MP
     self.job = HeroJob.default if job.blank?
     
-    init_hp_mp_by_job
+    update_power_by_job
   end
 
-  def init_hp_mp_by_job
+  def update_power_by_job
     hero_job = HeroJob.new(job)
-    self.hp = hero_job.init_hp
-    self.mp = hero_job.init_mp
+    new_hp, new_mp = hero_job.calculate_power(self)
+    self.hp = new_hp
+    self.mp = new_mp
   end
-
-  private
 
   def with_existing_job
     if HeroJob.available_jobs.exclude?(job)
