@@ -15,6 +15,10 @@ class HeroesController < ApplicationController
 
   def show
     if hero = find_hero
+      image_url = hero.image_url(:medium)
+      thumbnail_url = hero.image_url(:thumbnail)
+
+      # render json: hero.serializable_hash(except: :image_data, methods: [ :image_medium_url, :image_thumbnail_url ])
       render json: hero
     else
       render_error("cannot find hero")

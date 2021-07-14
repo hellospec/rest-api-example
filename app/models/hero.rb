@@ -13,6 +13,8 @@ class Hero < ApplicationRecord
   validates :name, uniqueness: true
   validate :with_existing_job
 
+  attr_accessor :image_medium_url, :image_thumbnail_url
+
   private
 
   def initialize_profile
@@ -35,5 +37,33 @@ class Hero < ApplicationRecord
     if HeroJob.available_jobs.exclude?(job)
       errors.add(:job, "is invalid")
     end
+  end
+
+  def host_url
+    ENV.fetch('HOST_URL', '')
+  end
+
+  def attributes
+    {
+      'id' => '',
+      'name' => '',
+      'job' => '',
+      'level' => '',
+      'hp' => '',
+      'mp' => '',
+      'image_medium_url' => '',
+      'image_thumbnail_url' => '',
+      'updated_at' => ''
+    }
+  end
+
+  def image_thumbnail_url
+    return '' if image_url(:thumbnail).blank?
+    host_url + image_url(:thumbnail)
+  end
+
+  def image_medium_url
+    return '' if image_url(:medium).blank?
+    host_url + image_url(:medium)
   end
 end
