@@ -1,4 +1,6 @@
 class Hero < ApplicationRecord
+  include ImageUploader::Attachment(:image) # adds an `image` virtual attribute
+
   before_create :initialize_profile
   before_update :update_power_by_job
 

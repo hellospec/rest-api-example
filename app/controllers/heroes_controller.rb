@@ -36,7 +36,7 @@ class HeroesController < ApplicationController
   private
 
   def hero_params
-    params.require('hero').permit(:name, :job, :gender)
+    params.require('hero').permit(:name, :job, :gender, :image)
   end
 
   def render_error(msg)
