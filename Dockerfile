@@ -5,9 +5,9 @@ RUN apk update && apk add --no-cache \
   postgresql-dev \
   tzdata \
   openssl \
+  imagemagick file \
   vim \
-  nodejs \
-  yarn
+  nodejs
 
 WORKDIR /app
 COPY Gemfile* ./
