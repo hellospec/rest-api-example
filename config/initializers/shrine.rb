@@ -9,3 +9,5 @@ Shrine.storages = {
 Shrine.plugin :activerecord 
 Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays 
 Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file 
+Shrine.plugin :derivatives, create_on_promote: true # for file processing
+Shrine.plugin :validation_helpers

@@ -7,7 +7,7 @@ class Hero < ApplicationRecord
   enum gender: { male: "m", female: "f" }
 
   BASE_HP = 100
-  BASE_MP = 70
+  BASE_MP = 0
 
   validates :name, presence: true
   validates :name, uniqueness: true
