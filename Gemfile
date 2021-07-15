@@ -14,9 +14,7 @@ gem 'puma', '~> 5.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-gem 'ed25519', '>= 1.2', '< 2.0'
-gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'image_processing', '~> 1.2'
 gem "shrine", "~> 3.0"
