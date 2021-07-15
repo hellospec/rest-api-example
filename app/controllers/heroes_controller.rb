@@ -18,7 +18,6 @@ class HeroesController < ApplicationController
       image_url = hero.image_url(:medium)
       thumbnail_url = hero.image_url(:thumbnail)
 
-      # render json: hero.serializable_hash(except: :image_data, methods: [ :image_medium_url, :image_thumbnail_url ])
       render json: hero
     else
       render_error("cannot find hero")
@@ -29,6 +28,18 @@ class HeroesController < ApplicationController
     if hero = find_hero
       if hero.update(hero_params)
         render json: hero
+      else
+        render_error("cannot update hero: #{hero.errors.messages}")
+      end
+    else
+      render_error("cannot find hero")
+    end
+  end
+
+  def destroy
+    if hero = find_hero
+      if hero.destroy
+        render json: { message: "successfully delete hero: #{hero.name}" }
       else
         render_error("cannot update hero: #{hero.errors.messages}")
       end
