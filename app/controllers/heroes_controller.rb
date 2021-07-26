@@ -51,6 +51,9 @@ class HeroesController < ApplicationController
   private
 
   def hero_params
+    if params[:hero][:image] == "undefined"
+      params.require(:hero).delete("image")
+    end
     params.require('hero').permit(:name, :job, :gender, :image)
   end
 
